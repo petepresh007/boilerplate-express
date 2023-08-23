@@ -14,7 +14,9 @@ app.get("/", (req, res)=>{
 
 console.log(__dirname)
 
-
+app.get("/json", (req, res)=>{
+    res.json({"message": "Hello json"})
+})
 
 
 
