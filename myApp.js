@@ -9,6 +9,14 @@ console.log("Hello World");
 
 app.use("/public", express.static(__dirname + "/public"));
 
+/**CREATING A LOGGER */
+app.use(function(req, res, next){
+    let string = req.method + " " + req.path  + " " + "-" + " " + req.ip;
+    console.log(string);
+    next();
+})
+
+
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/views/index.html")
 })
@@ -16,21 +24,6 @@ app.get("/", (req, res) => {
 console.log(__dirname)
 
 app.get("/json", (req, res) => {
-    // let pr = process.env.MESSAGE_STYLE;
-    // if (pr === "uppercase") {
-    //     return res.json({ "message": "HELLO JSON" })
-    // } else {
-    //     return res.json({ "message": "Hello json" })
-    // }
-    // let response = "Hello json";
-    // if (process.env.MESSAGE_STYLE === "uppercase"){
-    //     response = response.toUpperCase();
-    // }else{
-    //     response = "Hello json";
-    // }
-    // return res.json({ "message": response })
-
-
     var response = {
         "message": "Hello json"
     }
