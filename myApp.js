@@ -16,12 +16,19 @@ app.get("/", (req, res) => {
 console.log(__dirname)
 
 app.get("/json", (req, res) => {
-    let pr = process.env.MESSAGE_STYLE;
-    if (pr === "uppercase") {
-        return res.json({ "message": "HELLO JSON" })
-    } else {
-        return res.json({ "message": "Hello json" })
+    // let pr = process.env.MESSAGE_STYLE;
+    // if (pr === "uppercase") {
+    //     return res.json({ "message": "HELLO JSON" })
+    // } else {
+    //     return res.json({ "message": "Hello json" })
+    // }
+    let response = "Hello json";
+    if (process.env.MESSAGE_STYLE === "uppercase"){
+        response = response.toUpperCase();
+    }else{
+        response = response;
     }
+    return res.json({ "message": response })
 
 })
 
