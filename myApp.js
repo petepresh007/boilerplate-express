@@ -38,9 +38,15 @@ app.get("/now", function (req, res, next) {
     req.time = new Date().toString();
     next();
 }, function (req, res) {
-    res.send({ time: req.time });
+    res.json({ time: req.time });
 });
 
+
+/**PARAMETERS */
+app.get("/:word/echo", function (req, res) {
+    const { word } = req.params;
+    res.json({ echo: word });
+})
 
 
 
