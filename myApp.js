@@ -35,10 +35,10 @@ app.get("/json", (req, res) => {
 
 /**CHAINING THE MIDDLEWARE*/
 app.get("/now", function (req, res, next) {
-    req.time = new Date().toTimeString();
+    req.time = new Date().toString();
     next();
 }, (req, res) => {
-    return res.json({ time: req.time });
+    return res.send({ time: req.time });
 });
 
 
