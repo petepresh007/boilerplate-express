@@ -48,7 +48,11 @@ app.get("/:word/echo", function (req, res) {
     res.json({ echo: word });
 })
 
-
+/**REQ.QUERY */
+app.route("/name").get((req, res) => {
+    const { first, last } = req.query;
+    res.json({ name: `${first} ${last}` });
+});
 
 
 
